@@ -1,10 +1,10 @@
 package com.heu.admin.common.constant;
 
 /**
- * 返回状态码
- * 
- * @author ruoyi
- */
+ *  Http状态常量
+ * @author qiuao
+ * @date 2024/4/21 14:50
+*/
 public class HttpStatus
 {
     /**
@@ -91,4 +91,7 @@ public class HttpStatus
      * 系统警告消息
      */
     public static final int WARN = 601;
+
+    /*微信小程序登录失败*/
+    public static final int WXERROR = 700;
 }

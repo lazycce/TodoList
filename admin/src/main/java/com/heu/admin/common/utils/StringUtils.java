@@ -6,8 +6,6 @@ import java.util.*;
 
 /**
  * 字符串工具类
- * 
- * @author platform
  */
 public class StringUtils extends org.apache.commons.lang3.StringUtils
 {
@@ -246,7 +244,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
      * @param template 文本模板，被替换的部分用 {} 表示
      * @param params 参数值
      * @return 格式化后的文本
-     *//*
+     */
     public static String format(String template, Object... params)
     {
         if (isEmpty(params) || isEmpty(template))
@@ -256,7 +254,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
         return StrFormatter.format(template, params);
     }
 
-    *//**
+    /**
      * 是否为http(s)://开头
      * 
      * @param link 链接
