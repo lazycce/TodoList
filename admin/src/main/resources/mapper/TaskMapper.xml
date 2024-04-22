@@ -1,7 +1,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.heu.admin.mapper.TaskMapper">
+<mapper namespace="com.admin.mapper.TaskMapper">
     <select id="selectTaskList" resultType="TaskListVo" parameterType="long">
         SELECT A.ID,A.START_TIME,A.END_TIME,A.TITLE,A.CONTENT,A.IMPORTANCE_VALUE,
         B.OPTION_DESCRIPTION AS IMPORTANCE_DESCRIPTION,A.URGENCY_VALUE,C.OPTION_DESCRIPTION AS URGENCY_DESCRIPTION,

@@ -1,0 +1,37 @@
+# 应用服务 WEB 访问端口
+server:
+  port: 8080
+
+spring:
+  application:
+    name: todolist
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/todolist?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: root
+  #缓存配置
+  cache:
+    ehcache:
+      heap: 1000
+      offheap: 100
+      disk: 500
+      diskDir: tempfiles/cache/
+      expireTime: 30
+#mybatis-plus配置
+mybatis-plus:
+  configuration:
+    #日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #驼峰命名
+    use-actual-param-name: true
+  #mapper文件映射地址
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.admin.entity
+
+app:
+  appid: 88888888888888 #自己的appid
+  secret: 888888888888888 #自己的秘钥
+  grant_type: authorization_code
+
