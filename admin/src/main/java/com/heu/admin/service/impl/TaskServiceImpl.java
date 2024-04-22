@@ -3,6 +3,7 @@ package com.heu.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.heu.admin.entity.TaskList;
+import com.heu.admin.entity.vo.TaskListVo;
 import com.heu.admin.mapper.TaskMapper;
 import com.heu.admin.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +31,8 @@ public class TaskServiceImpl extends ServiceImpl<TaskMapper, TaskList> implement
      * @create: 2024/4/17-22:15
      **/
     @Override
-    public List<TaskList> getTaskList(Long userId) {
-        QueryWrapper<TaskList> taskWrapper = new QueryWrapper<>();
-        taskWrapper.eq("user_id", userId);
-        return taskMapper.selectList(taskWrapper);
+    public List<TaskListVo> getTaskList(Long userId) {
+        return taskMapper.selectTaskList(userId);
     }
 
     /*

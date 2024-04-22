@@ -2,8 +2,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.heu.admin.mapper.TaskMapper">
-    <select id="taskList" resultType="TaskList">
-
+    <select id="selectTaskList" resultType="TaskListVo" parameterType="long">
+        SELECT A.ID,A.START_TIME,A.END_TIME,A.TITLE,A.CONTENT,A.IMPORTANCE_VALUE,
+        B.OPTION_DESCRIPTION AS IMPORTANCE_DESCRIPTION,A.URGENCY_VALUE,C.OPTION_DESCRIPTION AS URGENCY_DESCRIPTION,
+        A.`STATUS`,D.OPTION_DESCRIPTION AS STATUS_DESCRIPTION FROM SYS_USER_TASK A
+        LEFT JOIN SYS_USER_OPTION B ON A.IMPORTANCE_VALUE = B.OPTION_VALUE
+        LEFT JOIN SYS_USER_OPTION C ON A.URGENCY_VALUE = C.OPTION_VALUE
+        LEFT JOIN SYS_USER_OPTION D ON A.`STATUS` = D.OPTION_VALUE
+        WHERE A.USER_ID = #{userId}
     </select>
-
 </mapper>

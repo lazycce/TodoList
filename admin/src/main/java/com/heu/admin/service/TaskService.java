@@ -2,6 +2,7 @@ package com.heu.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.heu.admin.entity.TaskList;
+import com.heu.admin.entity.vo.TaskListVo;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface TaskService extends IService<TaskList> {
 
-    List<TaskList> getTaskList(Long userId);
+    List<TaskListVo> getTaskList(Long userId);
 
     Long addTask(TaskList taskList, Long userId);
 

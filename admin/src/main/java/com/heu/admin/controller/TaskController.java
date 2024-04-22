@@ -3,6 +3,7 @@ package com.heu.admin.controller;
 import com.heu.admin.controller.core.BaseController;
 import com.heu.admin.entity.TaskList;
 import com.heu.admin.entity.core.AjaxResult;
+import com.heu.admin.entity.vo.TaskListVo;
 import com.heu.admin.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +46,7 @@ public class TaskController extends BaseController {
      **/
     @GetMapping("/list")
     public AjaxResult list(){
-        List<TaskList> taskList = taskService.getTaskList(getUserId());
+        List<TaskListVo> taskList = taskService.getTaskList(getUserId());
         return AjaxResult.success(taskList);
     }
 
