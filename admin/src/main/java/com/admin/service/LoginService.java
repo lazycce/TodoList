@@ -8,6 +8,7 @@ import com.admin.entity.vo.LoginVo;
 import com.alibaba.fastjson2.JSONObject;
 import com.admin.common.auth.token.JwtToken;
 import com.admin.common.utils.HttpUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.util.ObjectUtils;
  * @author: QiuAo
  * @create: 2024-04-20 14:52
  */
+@Slf4j
 @Service
 public class LoginService {
 
@@ -36,18 +38,18 @@ public class LoginService {
         //TODO 1.校验参数 使用异常处理
 
         //2.小程序登录
-        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + appProperties.getAppid() +
+        /*String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + appProperties.getAppid() +
                 "&secret=" + appProperties.getSecret() + "&js_code=" + code + "&grant_type=" + appProperties.getGrant_type();
-        String wxResStr = HttpUtils.sendGet(url);
-        /*String wxResStr = "{\n" +
+        String wxResStr = HttpUtils.sendGet(url);*/
+        String wxResStr = "{\n" +
                 "\"openid\":\"12818278172\",\n" +
                 "\"session_key\":\"xxxxx\",\n" +
                 "\"unionid\":\"xxxxx\",\n" +
                 "\"errcode\":0,\n" +
                 "\"errmsg\":\"xxxxx\"\n" +
-                "}";*/
+                "}";
         JSONObject wxResJson = JSONObject.parse(wxResStr);
-
+        //TODO 校验小程序登录结果
         //3.根据获取的openid获取用户，没有就默认注册此用户
         String openid = wxResJson.getString("openid");
         User user = userService.getUserByOpenid(openid);

@@ -5,6 +5,7 @@ import com.admin.entity.core.AjaxResult;
 import com.admin.entity.vo.TaskListVo;
 import com.admin.service.TaskService;
 import com.admin.entity.TaskList;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ import java.util.List;
  * @author: QiuAo
  * @create: 2024-04-16 21:12
  */
+@Slf4j
 @RestController
 @RequestMapping("/task")
 public class TaskController extends BaseController {

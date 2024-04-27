@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" monitorInterval="5">
+    <!-- 集中配置属性进行管理 -->
+    <properties>
+        <!--日志存放位置-->
+        <property name="LOG_HOME">./logs</property>
+        <!--日志格式-->
+        <property name="pattern">%d{HH：mm：ss} [%t] %-5level %logger{20} - [%method,%line] - %msg%n</property>
+    </properties>
+    <!-- 日志处理 -->
+    <Appenders>
+        <!--控制台输出-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern}"/>
+        </Console>
+
+        <!--系统日志输出 按照一定规则拆分日志的 appender -->
+        <RollingFile name="file_info" fileName="${LOG_HOME}/sys-info.log"
+                     filePattern="${LOG_HOME}/sys-info-%d{yyyy-MM-dd}.log">
+            <!--日志级别过滤器-->
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
+            <!--日志输出格式-->
+            <PatternLayout pattern="${pattern}" />
+            <!--日志拆分规则-->
+            <Policies>
+                <!--系统启动时触发拆分规则，生成新的日志文件-->
+                <OnStartupTriggeringPolicy/>
+                <!--按照文件大小拆分-->
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+                <!--按照时间节点拆分，规则根据filePattern定义 每一天生成一个日志文件-->
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <!--同一个目录下文件个数限定为30个，超过按照时间进行覆盖-->
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+        <!--系统error日志输出 按照一定规则拆分日志的 appender -->
+        <RollingFile name="file_error" fileName="${LOG_HOME}/sys-error.log"
+                     filePattern="${LOG_HOME}/sys-error-%d{yyyy-MM-dd}.log">
+            <!--日志级别过滤器-->
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+            <!--日志输出格式-->
+            <PatternLayout pattern="${pattern}" />
+            <!--日志拆分规则-->
+            <Policies>
+                <!--系统启动时触发拆分规则，生成新的日志文件-->
+                <OnStartupTriggeringPolicy/>
+                <!--按照文件大小拆分-->
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+                <!--按照时间节点拆分，规则根据filePattern定义-->
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <!--同一个目录下文件个数限定为30个，超过按照时间进行覆盖-->
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+    </Appenders>
+    <!--logger定义-->
+    <Loggers>
+        <Root level="info">
+            <!--指定日志使用的处理器-->
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="file_info"/>
+        </Root>
+    </Loggers>
+</Configuration>
