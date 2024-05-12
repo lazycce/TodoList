@@ -35,7 +35,7 @@ public class TaskServiceImpl extends ServiceImpl<TaskMapper, TaskList> implement
     }
 
     /*
-     * 新增或更新任务清单
+     * 新增任务清单
      * @param taskList
      * @return Long 新增的主键
      * @author: QiuAo
@@ -43,7 +43,6 @@ public class TaskServiceImpl extends ServiceImpl<TaskMapper, TaskList> implement
      **/
     @Override
     public Long addTask(TaskList taskList, Long userId) {
-        //新增任务
         taskList.setUserId(userId);
         taskMapper.insert(taskList);
         return taskList.getId();

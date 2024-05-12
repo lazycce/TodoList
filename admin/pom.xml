@@ -23,6 +23,7 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                     <groupId>org.springframework.boot</groupId>
                 </exclusion>
+
             </exclusions>
         </dependency>
         <dependency>

@@ -39,7 +39,7 @@ public class TaskList implements Serializable {
     /*目标清单主键*/
     private Long userTargetId;
     /*状态*/
-    private String status;
+    private String state;
     /*创建时间*/
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
@@ -48,4 +48,6 @@ public class TaskList implements Serializable {
     private Date updateTime;
     /*创建用户*/
     private Long userId;
+    /*目标主键*/
+    private Long targetId;
 }
